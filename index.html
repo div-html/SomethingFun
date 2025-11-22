@@ -296,6 +296,37 @@
           console.error("Feather Icons failed to load. Check your file path.");
         }
       });
+    
+  document.addEventListener("DOMContentLoaded", function() {
+    if (typeof feather !== 'undefined') feather.replace();
+    makeAjaxRequest('missing-file.html');
+  });
+
+  function makeAjaxRequest(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+
+    xhr.onload = function() {
+      if (xhr.status === 404) {
+        alert("Error 404: The file was not found.");
+      } 
+      else if (xhr.status === 403) {
+        alert("Error 403: Access denied/Forbidden.");
+      } 
+      else if (xhr.status === 500) {
+        alert("Error 500: Internal Server Error.");
+      } 
+      else if (xhr.status === 200) {
+        alert("Success! Data loaded.");
+      } 
+      else {
+        alert("Error: " + xhr.status);
+      }
+    };
+
+    xhr.send();
+  }
+
     </script>
   </body>
 </html>
