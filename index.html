@@ -1,332 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
 
-    <script src="feather.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap"
+    rel="stylesheet" />
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+  <script src="feather.js"></script>
 
-      .navbar {
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f7e9e8;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      padding: 30px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .brand p {
+      font-family: "Dancing Script", cursive;
+      font-size: 2rem;
+      color: #333;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: transparent;
+      border-radius: 25px;
+      padding: 8px 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      background: white;
+    }
+
+    .search-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      width: 200px;
+    }
+
+    .search-box i {
+      color: #999;
+      margin-right: 8px;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .links {
+      color: #333;
+      width: 24px;
+      height: 24px;
+    }
+
+    .links i:hover {
+      color: #f8beba;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #f7e9e8;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        padding: 20px 40px;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-      }
-
-      nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 1200px;
-      }
-
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .brand p {
-        font-family: "Dancing Script", cursive;
-        font-size: 2rem;
-        color: #333;
       }
 
       .search-box {
-        display: flex;
-        align-items: center;
-        background: transparent;
-        border-radius: 25px;
-        padding: 8px 15px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        background: white;
-      }
-
-      .search-box input {
-        background: transparent;
-        border: none;
-        outline: none;
-        font-size: 16px;
-        width: 200px;
-      }
-
-      .search-box i {
-        color: #999;
-        margin-right: 8px;
-      }
-
-      .links {
-        display: flex;
-        align-items: center;
-        gap: 25px;
-      }
-
-      .icon-btn {
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.2s ease;
-      }
-
-      .icon-btn:hover {
-        transform: scale(1.1);
-      }
-
-      .links {
-        color: #333;
-        width: 24px;
-        height: 24px;
-      }
-
-      .links i:hover {
-        color: #f8beba;
-      }
-
-      .menu-toggle {
         display: none;
       }
 
-      @media (max-width: 768px) {
-        .menu-toggle {
-          display: flex;
-        }
-        .search-box {
-          display: none;
-        }
-        .brand p {
-          font-size: 1.5rem;
-        }
-        nav {
-          padding: 0 10px;
-        }
-        .links {
-          gap: 15px;
-        }
-        .navbar {
-          padding: 15px 20px;
-        }
+      .brand p {
+        font-size: 1.5rem;
       }
 
-      @media (max-width: 480px) {
-        .navbar {
-          padding: 10px 15px;
-        }
-        .brand p {
-          font-size: 1.2rem;
-        }
-        .links {
-          gap: 10px;
-        }
+      nav {
+        padding: 0 10px;
       }
 
+      .links {
+        gap: 15px;
+      }
+
+      .navbar {
+        padding: 15px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 10px 15px;
+      }
+
+      .brand p {
+        font-size: 1.2rem;
+      }
+
+      .links {
+        gap: 10px;
+      }
+    }
+
+    .slider-container {
+      height: 600px;
+      max-width: 100%;
+      margin: 40px auto;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .slider {
+      display: flex;
+      width: 500%;
+      animation: slide 20s infinite;
+    }
+
+    .slide {
+      width: 20%;
+      height: 600px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    @media (max-width: 768px) {
       .slider-container {
-        height: 500px;
-        max-width: 100%;
-        margin: 40px auto;
-        overflow: hidden;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        position: relative;
-      }
-
-      .slider {
-        display: flex;
-        width: 500%;
-        animation: slide 20s infinite;
+        height: 300px;
+        margin: 30px 10px;
       }
 
       .slide {
-        width: 20%;
-        height: 500px;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .slider-container {
+        height: 200px;
+        margin: 20px 10px;
       }
 
-      @media (max-width: 768px) {
-        .slider-container {
-          height: 300px;
-          margin: 30px 10px;
-        }
-        .slide {
-          height: 300px;
-        }
+      .slide {
+        height: 200px;
+      }
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(0);
       }
 
-      @media (max-width: 480px) {
-        .slider-container {
-          height: 200px;
-          margin: 20px 10px;
-        }
-        .slide {
-          height: 200px;
-        }
+      15% {
+        transform: translateX(0);
       }
-      @keyframes slide {
-        0% { transform: translateX(0); }
-        15% { transform: translateX(0); }
-        20% { transform: translateX(-20%); }
-        35% { transform: translateX(-20%); }
-        40% { transform: translateX(-40%); }
-        55% { transform: translateX(-40%); }
-        60% { transform: translateX(-60%); }
-        75% { transform: translateX(-60%); }
-        80% { transform: translateX(-80%); }
-        95% { transform: translateX(-80%); }
-        100% { transform: translateX(0); }
-      }
-      .collection {
-        text-align: center;
-      }
-      .collection .head {
-        color: maroon;
-        font-size: 4rem;
-      }
-      .collection .subhead {
-        font-size: 2rem;
-      }
-    </style>
-  </head>
 
-  <body>
-    <div class="navbar">
-      <nav>
-        <div class="brand">
-          <img
-            src="https://ui-avatars.com/api/?name=Elysian&background=random&color=fff"
-            alt="Logo"
-          />
-          <p>Elysian</p>
-        </div>
+      20% {
+        transform: translateX(-20%);
+      }
 
-        <div class="search-box">
-          <i data-feather="search"></i>
-          <input type="text" placeholder="Search..." />
-        </div>
+      35% {
+        transform: translateX(-20%);
+      }
 
-        <div class="links">
-          <a href=""
-            ><button class="icon-btn" title="Wishlist">
-              <i data-feather="heart"></i></button
-          ></a>
-          <a href=""
-            ><button class="icon-btn" title="Add to Cart">
-              <i data-feather="shopping-cart"></i></button
-          ></a>
-          <a href="login.html"
-            ><button class="icon-btn" title="Profile">
-              <i data-feather="user"></i></button
-          ></a>
-          <button class="icon-btn menu-toggle" title="Menu">
-            <i data-feather="menu"></i>
-          </button>
-        </div>
-      </nav>
-    </div>
+      40% {
+        transform: translateX(-40%);
+      }
 
-    <div class="slider-container">
-      <div class="slider">
-        <div
-          class="slide"
-          style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=2070&auto=format&fit=crop')"
-        ></div>
-        <div
-          class="slide"
-          style="background-image: url('https://images.unsplash.com/photo-1573408301185-9146fe634ad0?q=80&w=2075&auto=format&fit=crop')"
-        ></div>
-        <div
-          class="slide"
-          style="background-image: url('pexels-git-stephen-gitau-302905-1670723.jpg ')"
-        ></div>
-        <div
-          class="slide"
-          style="background-image: url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=2070&auto=format&fit=crop')"
-        ></div>
-        <div
-          class="slide"
-          style="background-image: url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=2070&auto=format&fit=crop')"
-        ></div>
+      55% {
+        transform: translateX(-40%);
+      }
+
+      60% {
+        transform: translateX(-60%);
+      }
+
+      75% {
+        transform: translateX(-60%);
+      }
+
+      80% {
+        transform: translateX(-80%);
+      }
+
+      95% {
+        transform: translateX(-80%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .collection {
+      text-align: center;
+    }
+
+    .collection .head {
+      color: maroon;
+      font-size: 4rem;
+    }
+
+    .collection .subhead {
+      font-size: 2rem;
+    }
+
+    .single-image img {
+      height: 80vh;
+      border-radius: 10px;
+    }
+
+    .double-image img {
+      height: 40vh;
+      border-radius: 10px;
+    }
+
+    .double-image {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .grid {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .shopby {
+      margin-top: 30px;
+      font-size: 4rem;
+      text-align: center;
+      color: maroon;
+    }
+
+    .shopby2 {
+      font-size: 2rem;
+      text-align: center;
+    }
+    .items{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      margin-top: 30px;
+    }
+    .items img{
+      height: 40vh;
+      border-radius: 10px;
+    }
+    .line1{
+      display:flex ;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .line1 p{
+      font-size: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <nav>
+      <div class="brand">
+        <img src="https://ui-avatars.com/api/?name=Elysian&background=random&color=fff" alt="Logo" />
+        <p>Elysian</p>
+      </div>
+
+      <div class="search-box">
+        <i data-feather="search"></i>
+        <input type="text" placeholder="Search..." />
+      </div>
+
+      <div class="links">
+        <a href=""><button class="icon-btn" title="Wishlist">
+            <i data-feather="heart"></i></button></a>
+        <a href=""><button class="icon-btn" title="Add to Cart">
+            <i data-feather="shopping-cart"></i></button></a>
+        <a href="login.html"><button class="icon-btn" title="Profile">
+            <i data-feather="user"></i></button></a>
+        <button class="icon-btn menu-toggle" title="Menu">
+          <i data-feather="menu"></i>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <div class="slider-container">
+    <div class="slider">
+      <div class="slide"
+        style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=2070&auto=format&fit=crop')">
+      </div>
+      <div class="slide"
+        style="background-image: url('https://images.unsplash.com/photo-1573408301185-9146fe634ad0?q=80&w=2075&auto=format&fit=crop')">
+      </div>
+      <div class="slide" style="background-image: url('pexels-git-stephen-gitau-302905-1670723.jpg ')"></div>
+      <div class="slide"
+        style="background-image: url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=2070&auto=format&fit=crop')">
+      </div>
+      <div class="slide"
+        style="background-image: url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=2070&auto=format&fit=crop')">
       </div>
     </div>
+  </div>
 
-    <div class="collection">
-      <p class="head">Elysian Collection</p>
-      <p class="subhead">Explore our newly launched</p>
-      <div class="single-image">
-        <img src="" alt="" />
-      </div>
-      <div class="double-image">
-        <img src="" alt="" />
-        <img src="" alt="" />
-      </div>
+  <div class="collection">
+    <p class="head">Elysian Collection</p>
+    <p class="subhead">Explore our newly launched</p>
+  </div>
+  <div class="grid">
+    <div class="single-image">
+      <img src="view-luxurious-golden-ring-felt-jewelry-display.jpg" alt="" />
     </div>
-
-    <script>
-
-      document.addEventListener("DOMContentLoaded", function() {
-        if (typeof feather !== 'undefined') {
-          feather.replace();
-        } else {
-          console.error("Feather Icons failed to load. Check your file path.");
-        }
-      });
+    <div class="double-image">
+      <img src="top-view-elegant-wedding-rings-with-copy-space.jpg" alt="" />
+      <img src="top-view-engagement-rings-with-copy-space.jpg" alt="" />
+    </div>
+  </div>
+  <div>
+    <p class="shopby">Find Your Perfect Match</p>
+    <p class="shopby2">Choose Your Favourite</p>
+  </div>
+  <div class="items">
+    <div class="line1">
+      <img src="https://www.tanishq.co.in/dw/image/v2/BKCK_PRD/on/demandware.static/-/Library-Sites-TanishqSharedLibrary/default/dwf908d297/homepage/shopByCategory/ring-25-11-25.jpg" alt="">
+          <p>Finger Ring</p>
+    </div>
+          
+    <div class="line1">
+      <img src="https://www.tanishq.co.in/dw/image/v2/BKCK_PRD/on/demandware.static/-/Library-Sites-TanishqSharedLibrary/default/dwa0e3f2e8/homepage/shopByCategory/earrings-25-11-25.jpg" alt="">
+       <p>Earring</p>
+    </div>
+      
+    <div class="line1">
+        <img src="https://www.tanishq.co.in/dw/image/v2/BKCK_PRD/on/demandware.static/-/Library-Sites-TanishqSharedLibrary/default/dwda9a1adc/homepage/shopByCategory/pendant-25-11-25.jpg" alt="">
+       <p>Pendants</p>
+    </div>
+     
+    <div class="line1">
+        <img src="https://www.tanishq.co.in/dw/image/v2/BKCK_PRD/on/demandware.static/-/Library-Sites-TanishqSharedLibrary/default/dw523fbc6d/homepage/shopByCategory/bracelets-25-11-25.jpg" alt="">
+    <p>Bracelet</p>
+    </div>
+     
+      
     
-  document.addEventListener("DOMContentLoaded", function() {
-    if (typeof feather !== 'undefined') feather.replace();
-    makeAjaxRequest('missing-file.html');
-  });
+      </div>
+  
+  
 
-  function makeAjaxRequest(url) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url, true);
+ 
 
-    xhr.onload = function() {
-      if (xhr.status === 404) {
-        alert("Error 404: The file was not found.");
-      } 
-      else if (xhr.status === 403) {
-        alert("Error 403: Access denied/Forbidden.");
-      } 
-      else if (xhr.status === 500) {
-        alert("Error 500: Internal Server Error.");
-      } 
-      else if (xhr.status === 200) {
-        alert("Success! Data loaded.");
-      } 
-      else {
-        alert("Error: " + xhr.status);
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+      if (typeof feather !== 'undefined') {
+        feather.replace();
+      } else {
+        console.error("Feather Icons failed to load. Check your file path.");
       }
-    };
+    });
 
-    xhr.send();
-  }
+    document.addEventListener("DOMContentLoaded", function () {
+      if (typeof feather !== 'undefined') feather.replace();
+      makeAjaxRequest('missing-file.html');
+    });
 
-    </script>
-  </body>
+    function makeAjaxRequest(url) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url, true);
+
+      xhr.onload = function () {
+        if (xhr.status === 404) {
+          alert("Error 404: The file was not found.");
+        }
+        else if (xhr.status === 403) {
+          alert("Error 403: Access denied/Forbidden.");
+        }
+        else if (xhr.status === 500) {
+          alert("Error 500: Internal Server Error.");
+        }
+        else if (xhr.status === 200) {
+          alert("Success! Data loaded.");
+        }
+        else {
+          alert("Error: " + xhr.status);
+        }
+      };
+
+      xhr.send();
+    }
+
+  </script>
+</body>
+
 </html>
